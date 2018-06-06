@@ -2,6 +2,7 @@ var input_name = document.getElementById("input-name");
 var subject = document.getElementById("select-subject");
 var output_text = "hihi";
 var output_mark;
+var link = document.createElement("a");
 var rand = Math.floor(Math.random() * 26) + 11;
 
 function Mark() {
@@ -16,18 +17,17 @@ function Mark() {
         this.text["su"] = su;
         this.text["dia"] = dia;
         this.text["theduc"] = theduc;
-
     }
 }
 
 var low = new Mark();
 var med = new Mark();
 var high = new Mark();
-low.initText(   "Nguyên nhân điểm thấp: quên mang CASIO vào phòng thi", 
+low.initText(   "Nguyên nhân điểm thấp: \nQuên mang CASIO vào phòng thi", 
                 "Đề thi môn văn: \"Phân tích mối quan hệ giữa 2 nhà thơ Xuân Quỳnh và Huy Cận\"",
                 "Choose same meaning word with \"potang ina mo bo bo\"",
                 "Câu cho điểm: Áp dụng công thức De Broglie và hệ thức Heisenberg để tính tuổi thọ của bạn",
-                "Câu gỡ điểm: cân bằng phương trình: H2 + O2 = PENIS",
+                "Câu gỡ điểm - Cân bằng phương trình:\n\n H2 + O2 → PENIS",
                 "Câu điểm 6: Xác định mối quan hệ huyết thống của em với hàng xóm xung quanh",
                 "Câu ăn điểm: Tổng ngày sinh của Marx và Lenin quy đổi sang hệ Hexa là bao nhiêu?",
                 "Câu hỏi ngôi sao hy vọng: Quan điểm của em về vấn đề Đặc Khu Kinh Tế (j4f, not triggered)",
@@ -35,26 +35,35 @@ low.initText(   "Nguyên nhân điểm thấp: quên mang CASIO vào phòng thi"
 
 med.initText(   "Làm tất cả các câu điểm 8 9 10. Tuy nhiên buồn ỉa quá xin nộp bài sớm, quên chưa khoanh vào bài", 
                 "Phân tích rất sâu sắc nhân vật Thúy Kiều, tuy nhiên viết nhầm tên tác phẩm là \"Làm đĩ\" của Vũ Trọng Phụng nên bị trừ điểm đạo đức.",
-                "Choose same meaning word with \"potang ina mo bo bo\"",
-                "Câu cho điểm: Áp dụng công thức De Broglie và hệ thức Heisenberg để tính tuổi thọ của bạn",
-                "Câu gỡ điểm: cân bằng phương trình: H2 + O2 = PENIS",
-                "Câu điểm 6: Xác định mối quan hệ huyết thống của em với hàng xóm xung quanh",
-                "Câu ăn điểm: Tổng ngày sinh của Marx và Lenin quy đổi sang hệ Hexa là bao nhiêu?",
-                "Câu hỏi ngôi sao hy vọng: Quan điểm của em về vấn đề Đặc Khu Kinh Tế (j4f, not triggered)",
-                "Không vượt qua bài kiểm tra tâm sinh lý tuổi dậy thì");
+                "Bài luận chứa những nội dung nhạy cảm như BDSM, BJ, Doggy nên điểm không có được cao",
+                "Quên mất công thức ƛ = v.t nên bỏ mất một số câu đáng tiếc",
+                "Đề chứa quá nhiều kiến thức thực tiễn, như là hỏi thành phần hóa học của gàu chẳng hạn, gây khó khăn cho người thi",
+                "Chỉ làm được các câu liên quan đến quan hệ nam nữ và sinh đẻ nên điểm thấp",
+                "Nhầm sinh nhật Bác Hồ với ngày giải phóng miền Nam",
+                "Chọn nhầm đảo Hải Nam là một trong số địa điểm du lịch đắt khách của nước ta",
+                "Điểm tương ứng bằng độ dài của ciu theo centimet (nếu là nam giới)");
 
-high.initText(   "Nguyên nhân điểm thấp: quên mang CASIO vào phòng thi", 
-                "Đề thi môn văn: \"Phân tích mối quan hệ giữa 2 nhà thơ Xuân Quỳnh và Huy Cận\"",
-                "Choose same meaning word with \"potang ina mo bo bo\"",
-                "Câu cho điểm: Áp dụng công thức De Broglie và hệ thức Heisenberg để tính tuổi thọ của bạn",
-                "Câu gỡ điểm: cân bằng phương trình: H2 + O2 = PENIS",
-                "Câu điểm 6: Xác định mối quan hệ huyết thống của em với hàng xóm xung quanh",
-                "Câu ăn điểm: Tổng ngày sinh của Marx và Lenin quy đổi sang hệ Hexa là bao nhiêu?",
-                "Câu hỏi ngôi sao hy vọng: Quan điểm của em về vấn đề Đặc Khu Kinh Tế (j4f, not triggered)",
-                "Không vượt qua bài kiểm tra tâm sinh lý tuổi dậy thì");                
+high.initText(  "Làm xong bài còn dư 60 phút, ngồi đánh caro với bạn bàn bên, xin ra ngoài đái ỉa. Khi hết giờ còn giúp giám thị thu bài cho các bạn.", 
+                "Trúng tủ đề \"Phân tích nhân vật Chí Phèo\" nhờ kỹ năng mặt dày ăn hôi đồ ăn canteen của bạn bè đã ăn sâu vào máu",
+                "Khoanh lụi trúng 8 điểm vì trước khi thi đã càu thần Thìa và thần Xoài phù hộ",
+                "Vận dụng tối đa kinh nghiệm đổ đèo leo núi khi đi phượt để làm các bài tập tính chuyển động trên mặt phẳng nghiêng có ma sát",
+                "Phải giấu tài là giỏi hóa vì sợ bị bạn bé xa lánh, đến khi thi mới dám bộc lộ",
+                "Nhắm mắt cũng đoán được bạn thi Y Hà Nội, nhưng Toán 10 Hóa 10 nữa hẵng mong đỗ, nhá!",
+                "Có họ hàng với cụ Lê Văn Lan, thấm nhuần truyền thống yêu nước của dân tộc",
+                "Làm được nhiều câu hỏi hóc búa về các vấn đề chủ quyền biển đảo (hiểu biết thông qua các bài share trên các page facebook)",
+                "Được miễn học thể khi lên đại học");                
 
 function generate() {
-    var num = toNumber(subject.value) + toNumber(input_name.value);
+    if (input_name.value == "") {
+        swal({
+            icon: "warning",
+            title: "Kimi no na wa?",
+            text: "Nhập tên để tôi tiên đoán điểm cho bạn nhé!",
+            button: true,
+        })
+        return;
+    }
+    var num = toNumber(subject.value) + toNumber((input_name.value).toUpperCase());
     output_mark = num % 11;
     if (output_mark > 8) {
         output_text = high.text[subject.value];
@@ -65,8 +74,34 @@ function generate() {
     else {
         output_text = low.text[subject.value];
     }
-    alert(output_mark);
-    alert(output_text);
+
+    setTimeout(function() {
+        html2canvas(document.querySelector(".swal-modal")).then(canvas => {
+            var base64 = canvas.toDataURL("image/png");
+            link.setAttribute("href", base64);
+            link.setAttribute("download", "Tien-doan-diem-thi-" + subject.value);
+        });
+    }, 200);
+
+    swal({
+        title: output_mark + " ĐIỂM",
+        text: "Môn " + subject.options[subject.selectedIndex].innerHTML + "\n\n" + output_text,
+        buttons: [true, "Lưu ảnh"]
+    })
+    .then((capture) => {
+        if (capture) {
+            link.click();
+            swal({
+                title: "Đã lưu ảnh!",
+                text: "Kết quả tiên đoán đã được lưu. \nShare lên khoe bạn bè ngay nhé!\n\nKèm link:\n https://",  
+                icon: "success",
+            });
+            
+        } else {
+            swal("Thử tiên đoán những môn khác nữa nhé!");
+        }
+    });
+    
 }
 
 function toNumber(str) {

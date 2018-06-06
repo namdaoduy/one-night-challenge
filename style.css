@@ -1,3 +1,129 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    text-align: center; 
+    -webkit-perspective: 700px;
+    -moz-perspective: 700px;
+     -ms-perspective: 700px;
+         perspective: 700px;    
+}
+
+::placeholder {
+    text-transform: none;
+    color: #b9b9b9;
+    opacity: 1; 
+}
+
+body {
+    background-color: #ffd900;
+	background: linear-gradient(#ffd900a6,#da7a00bb), url("image/funky-lines.png");
+}
+
+.swal-title {
+    font-size: 40px;
+}
+
+.swal-text {
+    text-align: center;
+    width: 80%;
+}
+
+#title {
+    width: fit-content;
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 90%;
+}
+
+#input-name {
+    text-transform: uppercase;
+}
+
+#input-name, #select-subject {
+    display: block;
+    width: 300px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px auto;
+}
+
+label {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 10px auto;
+}
+
+/* Reset */
+button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+}
+
+/* Custom */
+button {
+    display: inline-block;
+    position: relative;
+    padding: 20px 38px;
+    top: 0;
+    font-size: 30px;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba( 0, 174, 197, 0.5 );
+    background: rgb(0, 174, 197);
+    color: #fff;
+    box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );
+
+    -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+            transform: translateZ(0);
+
+    -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+}
+
+button:hover {
+    top: -10px;
+    box-shadow: 0px 10px 10px rgba(15, 122, 165, 0.2);
+
+    -webkit-transform: rotateX(20deg);
+        -moz-transform: rotateX(20deg);
+        -ms-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+}
+
+#predict {
+    margin-top:30px; 
+}
+
+@media (min-width: 769px) {
+    #title {
+        width: 700px;
+    }
+
+    #input-name, #select-subject {
+        width: 500px;
+        height: 70px;
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 20px;
+    }
 }
