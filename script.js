@@ -73,7 +73,7 @@ function generate() {
         swal({
             icon: "warning",
             title: "Too short!",
-            text: "Nhập tên đầy đủ để tiên đoán chính xác hơn nhé!",
+            text: "Nhập tên đầy đủ đeeee! Bảo tên là " + (input_name.value).toUpperCase() + " thì tôi phân biệt được ai với ai!",
             button: true,
         })
         return;
