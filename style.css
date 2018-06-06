@@ -177,3 +177,9 @@ button {
 .hide {
     display: none;
 }
+
+@media (max-height: 475px) {
+    #title {
+        padding-top: 20px;
+        padding-bottom: 20px;
+}
