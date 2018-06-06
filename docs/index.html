@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta property="og:image" content="https://namdaoduy.github.io/predictor/image/Untitled-3.png" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://namdaoduy.github.io/predictor" />
+	<meta property="og:title" content="Tiên đoán điểm thi đại học" />
+	<meta property="og:description" content="Tiên đoán điểm thi đại học của bạn dựa vào năng lực của trí tuệ nhân tạo" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115861538-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115861538-3');
+    </script>
+    <title>Tiên đoán điểm thi đại học</title>
+</head>
+<body>
+    <img src="image/Untitled-3.png" alt="title" id="title">
+    <input type="text" placeholder="Nhập tên đầy đủ" id="input-name">
+    <label for="select-subject">Chọn môn thi cần tiên đoán</label>
+    <select name="Chọn môn thi" id="select-subject">
+        <option value="toan">Toán</option>
+        <option value="van">Văn</option>
+        <option value="anh">Anh</option>
+        <option value="ly">Lý</option>
+        <option value="hoa">Hóa</option>
+        <option value="sinh">Sinh</option>
+        <option value="su">Sử</option>
+        <option value="dia">Địa</option>
+        <option value="theduc">Thể dục</option>
+    </select>
+    <button onclick="generate()" id="predict">TIÊN ĐOÁN</button>
+    <a href="https://www.facebook.com/26.jordan" id="footer" target="_blank" rel="noopener">© 2018 namdaoduy</a>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBYhY2BZTGS-5ceZfa6QPcSmIJrvIn6REU",
+            authDomain: "predictor-403c5.firebaseapp.com",
+            databaseURL: "https://predictor-403c5.firebaseio.com",
+            projectId: "predictor-403c5",
+            storageBucket: "predictor-403c5.appspot.com",
+            messagingSenderId: "86058205186"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    </script>
+    <script src="sweetalert.min.js"></script>
+    <script src="html2canvas.min.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+    
+
+</body>
+</html>
