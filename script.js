@@ -135,10 +135,9 @@ function generate() {
                 link.click();
                 swal({
                     title: "Đã lưu ảnh!",
-                    text: "Kết quả tiên đoán đã được lưu. \nShare lên khoe bạn bè ngay nhé!\n\nKèm link:\n https://",  
+                    text: "Kết quả tiên đoán đã được lưu. \nShare lên khoe bạn bè ngay nhé!\n\nKèm link:\n https://namdaoduy.github.io/predictor",  
                     icon: "success",
                 });
-                
             } else {
                 swal("Thử tiên đoán những môn khác nữa nhé!");
             }
