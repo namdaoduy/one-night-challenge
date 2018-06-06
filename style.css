@@ -173,3 +173,7 @@ button {
     text-decoration: none;
     color: #0000009d;
 }
+
+.hide {
+    display: none;
+}

@@ -10,6 +10,9 @@ var waiting = document.createElement("div");
 waiting.id = "waiting";
 waiting.innerHTML = "<h3>Đang nhìn thấu 14.000.605 tương lai</h3>" +
 "<div class='bouncing-loader'><div></div><div></div><div></div></div>";
+var cre = document.createElement("div");
+cre.id = "cre";
+cre.innerHTML = "<br><br>Tiên đoán tại<br>namdaoduy.github.io/predictor<br><br>";
 
 function Mark() {
     this.text = [],
@@ -118,7 +121,22 @@ function generate() {
     }).then(function() {
         setTimeout(function() {
             html2canvas(document.querySelector(".swal-modal")).then(canvas => {
-                var base64 = canvas.toDataURL("image/png");
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "#FFF";
+                ctx.fillRect(0,canvas.height - 90,1500,75);
+                ctx.font = "15px 'Montserrat'";
+                ctx.fillStyle = "#595959";
+                ctx.fillText("Tiên đoán tại: namdaoduy.github.io/predictor", canvas.width / 2 - 160, canvas.height - 20);
+                var newcanvas = document.createElement("canvas");
+                newcanvas.width = canvas.width;
+                newcanvas.height = canvas.height + 100;
+                var ctx2 = newcanvas.getContext("2d");
+                ctx2.fillStyle = "#FFF";
+                ctx2.fillRect(0,0,1000,900);
+                var img = document.getElementById("title");
+                ctx2.drawImage(img,newcanvas.width / 2 - 150,20,300,80);
+                ctx2.drawImage(canvas,0,100);
+                var base64 = newcanvas.toDataURL("image/png");
                 link.setAttribute("href", base64);
                 link.setAttribute("download", "Tien-doan-diem-thi-" + subject.value);
             });
