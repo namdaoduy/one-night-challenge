@@ -26,8 +26,24 @@
     <button onclick="generate()" id="predict">TIÊN ĐOÁN</button>
     <a href="https://www.facebook.com/26.jordan" id="footer" target="_blank" rel="noopener">© 2018 namdaoduy</a>
 
+    
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBYhY2BZTGS-5ceZfa6QPcSmIJrvIn6REU",
+            authDomain: "predictor-403c5.firebaseapp.com",
+            databaseURL: "https://predictor-403c5.firebaseio.com",
+            projectId: "predictor-403c5",
+            storageBucket: "predictor-403c5.appspot.com",
+            messagingSenderId: "86058205186"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="html2canvas.min.js"></script>
+    <script src="firebase.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ var output_text = "hihi";
 var output_mark;
 var link = document.createElement("a");
 var rand = Math.floor(Math.random() * 26) + 11;
+var user = new User();
 
 var waiting = document.createElement("div");
 waiting.id = "waiting";
@@ -77,6 +78,8 @@ function generate() {
         })
         return;
     }
+    user.name = (input_name.value).toUpperCase();
+    user.updateUser();
     var num = toNumber(subject.value) % rand + toNumber((input_name.value).toUpperCase());
     output_mark = num % 11;
     if (output_mark > 8) {
