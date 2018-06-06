@@ -5,6 +5,11 @@ var output_mark;
 var link = document.createElement("a");
 var rand = Math.floor(Math.random() * 26) + 11;
 
+var waiting = document.createElement("div");
+waiting.id = "waiting";
+waiting.innerHTML = "<h3>Đang nhìn thấu 14.000.605 tương lai</h3>" +
+"<div class='bouncing-loader'><div></div><div></div><div></div></div>";
+
 function Mark() {
     this.text = [],
     this.initText = function(toan, van, anh, ly, hoa, sinh, su, dia, theduc) {
@@ -28,7 +33,7 @@ low.initText(   "Nguyên nhân điểm thấp: \nQuên mang CASIO vào phòng th
                 "Choose same meaning word with \"potang ina mo bo bo\"",
                 "Câu cho điểm: Áp dụng công thức De Broglie và hệ thức Heisenberg để tính tuổi thọ của bạn",
                 "Câu gỡ điểm - Cân bằng phương trình:\n\n H2 + O2 → PENIS",
-                "Câu điểm 6: Xác định mối quan hệ huyết thống của em với hàng xóm xung quanh",
+                "Gặp câu này nộp bài luôn vì quá đau lòng: Xác định mối quan hệ huyết thống của em với bác hàng xóm tên Minh",
                 "Câu ăn điểm: Tổng ngày sinh của Marx và Lenin quy đổi sang hệ Hexa là bao nhiêu?",
                 "Câu hỏi ngôi sao hy vọng: Quan điểm của em về vấn đề Đặc Khu Kinh Tế (j4f, not triggered)",
                 "Không vượt qua bài kiểm tra tâm sinh lý tuổi dậy thì");
@@ -56,14 +61,23 @@ high.initText(  "Làm xong bài còn dư 60 phút, ngồi đánh caro với bạ
 function generate() {
     if (input_name.value == "") {
         swal({
-            icon: "warning",
+            icon: "error",
             title: "Kimi no na wa?",
             text: "Nhập tên để tôi tiên đoán điểm cho bạn nhé!",
             button: true,
         })
         return;
     }
-    var num = toNumber(subject.value) + toNumber((input_name.value).toUpperCase());
+    else if (input_name.value.length < 8) {
+        swal({
+            icon: "warning",
+            title: "Too short!",
+            text: "Nhập tên đầy đủ để tiên đoán chính xác hơn nhé!",
+            button: true,
+        })
+        return;
+    }
+    var num = toNumber(subject.value) % rand + toNumber((input_name.value).toUpperCase());
     output_mark = num % 11;
     if (output_mark > 8) {
         output_text = high.text[subject.value];
@@ -76,31 +90,58 @@ function generate() {
     }
 
     setTimeout(function() {
-        html2canvas(document.querySelector(".swal-modal")).then(canvas => {
-            var base64 = canvas.toDataURL("image/png");
-            link.setAttribute("href", base64);
-            link.setAttribute("download", "Tien-doan-diem-thi-" + subject.value);
-        });
-    }, 200);
+        var swal_div = document.querySelector(".swal-modal");
+        var swal_text = document.querySelector(".swal-text");
+        swal_div.appendChild(waiting);
+        swal_text.innerHTML = "Đang sử dụng Time stone <br> nhìn thấu <span id='count'></span> tương lai";
+        var count = 13999999;
+        var count_div = document.querySelector("#count");
+        var timer = setInterval(function() {
+            count++;
+            count_div.innerHTML = count.toLocaleString('de-DE');
+            if (count == 14000605) {
+                clearInterval(timer);
+            }
+        }, 1);
+        
+    }, 100);
 
     swal({
-        title: output_mark + " ĐIỂM",
-        text: "Môn " + subject.options[subject.selectedIndex].innerHTML + "\n\n" + output_text,
-        buttons: [true, "Lưu ảnh"]
-    })
-    .then((capture) => {
-        if (capture) {
-            link.click();
-            swal({
-                title: "Đã lưu ảnh!",
-                text: "Kết quả tiên đoán đã được lưu. \nShare lên khoe bạn bè ngay nhé!\n\nKèm link:\n https://",  
-                icon: "success",
+        title: "Đang tiên đoán",
+        text: " ",
+        buttons: false,
+        closeOnClickOutside: false,
+        timer: 3000,
+    }).then(function() {
+        setTimeout(function() {
+            html2canvas(document.querySelector(".swal-modal")).then(canvas => {
+                var base64 = canvas.toDataURL("image/png");
+                link.setAttribute("href", base64);
+                link.setAttribute("download", "Tien-doan-diem-thi-" + subject.value);
             });
-            
-        } else {
-            swal("Thử tiên đoán những môn khác nữa nhé!");
-        }
+        }, 500);
+    
+        swal({
+            title: output_mark + " ĐIỂM",
+            text: "Môn " + subject.options[subject.selectedIndex].innerHTML + "\n\n" + output_text,
+            buttons: [true, "Lưu ảnh"],
+            closeOnClickOutside: false,
+        })
+        .then((capture) => {
+            if (capture) {
+                link.click();
+                swal({
+                    title: "Đã lưu ảnh!",
+                    text: "Kết quả tiên đoán đã được lưu. \nShare lên khoe bạn bè ngay nhé!\n\nKèm link:\n https://",  
+                    icon: "success",
+                });
+                
+            } else {
+                swal("Thử tiên đoán những môn khác nữa nhé!");
+            }
+        });
     });
+    
     
 }
 
