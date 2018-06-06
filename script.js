@@ -33,7 +33,7 @@ var low = new Mark();
 var med = new Mark();
 var high = new Mark();
 low.initText(   "Nguyên nhân điểm thấp: \nQuên mang CASIO vào phòng thi", 
-                "Đề thi môn văn: \"Phân tích mối quan hệ giữa 2 nhà thơ Xuân Quỳnh và Huy Cận\"",
+                "Đề thi môn văn: \"Phân tích mối quan hệ giữa 2 nhà thơ Xuân Diệu và Huy Cận\"",
                 "Choose same meaning word with \"potang ina mo bo bo\"",
                 "Câu cho điểm: Áp dụng công thức De Broglie và hệ thức Heisenberg để tính tuổi thọ của bạn",
                 "Câu gỡ điểm - Cân bằng phương trình:\n\n H2 + O2 → PENIS",
